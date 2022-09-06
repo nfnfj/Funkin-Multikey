@@ -104,6 +104,10 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
+	    #if android
+        FlxG.android.preventDefaultKeys = [BACK];
+        #end
+        
 		FlxG.game.focusLostFramerate = 60;
 		FlxG.fixedTimestep = false;
 
