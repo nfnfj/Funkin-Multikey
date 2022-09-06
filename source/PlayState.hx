@@ -934,6 +934,10 @@ class PlayState extends MusicBeatState {
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
+		
+		#if android
+		addAndroidControls();
+		#end
 
 		if (gf.script != null)
 			gf.script.callFunction("createPost");
