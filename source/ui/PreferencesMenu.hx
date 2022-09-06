@@ -4,6 +4,7 @@ import openfl.Lib;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxCamera;
+import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import haxe.ds.StringMap;
 
