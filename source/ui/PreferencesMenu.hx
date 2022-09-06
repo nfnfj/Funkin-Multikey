@@ -18,14 +18,6 @@ class PreferencesMenu extends Page
 	var menuCamera:FlxCamera;
 	var items:TextMenuList;
 	var camFollow:FlxObject;
-	
-		#if android
-		var tipText:FlxText = new FlxText(10, FlxG.height - 24, 0, 'Press C to customize your android controls', 16);
-		tipText.setFormat(Paths.font('vcr.ttf'), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		tipText.borderSize = 2.4;
-		tipText.scrollFactor.set();
-		add(tipText);
-		#end
 
 	#if debug
 	public static var developer_mode:Bool = true;
@@ -73,15 +65,6 @@ class PreferencesMenu extends Page
 	{
 		return preferences.get(pref);
 	}
-	
-		#if android
-		if (virtualPad.buttonC.justPressed) {
-			#if android
-			removeVirtualPad();
-			#end
-			openSubState(new android.AndroidControlsSubState());
-		}
-		#end
 
 	public static function initPrefs()
 	{
