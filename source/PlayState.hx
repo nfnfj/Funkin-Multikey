@@ -924,6 +924,10 @@ class PlayState extends MusicBeatState {
 		iconP2 = new HealthIcon(SONG.player2, false);
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
+		
+	    #if android
+		addAndroidControls();
+		#end
 
 		grpNoteSplashes.cameras = [camHUD];
 		strumLineNotes.cameras = [camHUD];
@@ -934,10 +938,6 @@ class PlayState extends MusicBeatState {
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
-		
-		#if android
-		addAndroidControls();
-		#end
 
 		if (gf.script != null)
 			gf.script.callFunction("createPost");
