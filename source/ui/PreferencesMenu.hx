@@ -23,16 +23,6 @@ class PreferencesMenu extends Page
 		tipText.scrollFactor.set();
 		add(tipText);
 		#end
-		
-		#if android
-		if (virtualPad.buttonC.justPressed) {
-			#if android
-			removeVirtualPad();
-			#end
-			openSubState(new android.AndroidControlsSubState());
-		}
-		#end
-	}
 
 	#if debug
 	public static var developer_mode:Bool = true;
@@ -80,6 +70,15 @@ class PreferencesMenu extends Page
 	{
 		return preferences.get(pref);
 	}
+	
+		#if android
+		if (virtualPad.buttonC.justPressed) {
+			#if android
+			removeVirtualPad();
+			#end
+			openSubState(new android.AndroidControlsSubState());
+		}
+		#end
 
 	public static function initPrefs()
 	{
