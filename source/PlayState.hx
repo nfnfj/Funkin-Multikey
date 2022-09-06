@@ -934,6 +934,10 @@ class PlayState extends MusicBeatState {
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
+		
+		         #if android
+	        addAndroidControls();
+                #end
 
 		if (gf.script != null)
 			gf.script.callFunction("createPost");
@@ -985,7 +989,7 @@ class PlayState extends MusicBeatState {
 					schoolIntro(doof);
 				case 'thorns':
 					schoolIntro(doof);
-				#if web
+				#if web || android
 				case 'ugh':
 					ughIntro();
 				case 'guns':
@@ -1157,6 +1161,9 @@ class PlayState extends MusicBeatState {
 		inCutscene = false;
 
 		camHUD.visible = true;
+            #if android
+		    androidControls.visible = false;
+		    #end
 
 		allScriptCall("generateStaticArrows");
 
@@ -1682,7 +1689,7 @@ class PlayState extends MusicBeatState {
 
 		scoreTxt.text = "Score:" + songScore;
 
-		if (controls.PAUSE && startedCountdown && canPause) {
+		if (controls.PAUSE #if android || FlxG.android.justReleased.BACK #end && startedCountdown && canPause) {
 			persistentUpdate = false;
 			persistentDraw = true;
 			paused = true;
@@ -1939,6 +1946,9 @@ class PlayState extends MusicBeatState {
 		canPause = false;
 		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
+			#if android
+	        androidControls.visible = false;
+	        #end
 		if (SONG.validScore) {
 			#if !switch
 			Highscore.saveScore(SONG.song, songScore, storyDifficulty);
