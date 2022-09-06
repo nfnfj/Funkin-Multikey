@@ -20,7 +20,7 @@ class OptionsMenu extends Page
 		});
 		createItem('android controls', function()
 		{
-			FlxG.switchState(new android.AndroidControlsMenu());
+			FlxG.switchState(new android.AndroidControlsSubState());
 		});
 		if (showDonate)
 		{
