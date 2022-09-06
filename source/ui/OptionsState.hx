@@ -54,7 +54,13 @@ class OptionsState extends MusicBeatState
 		add(tipText);
 		#end
 		
-		#if android
+		super.create();
+		
+    	#if android
+        addVirtualPad(LEFT_FULL, A_B_C);
+        #end
+        
+        #if android
 		if (virtualPad.buttonC.justPressed) {
 			#if android
 			removeVirtualPad();
@@ -62,12 +68,6 @@ class OptionsState extends MusicBeatState
 			openSubState(new android.AndroidControlsSubState());
 		}
 		#end
-		
-		super.create();
-		
-    	#if android
-        addVirtualPad(LEFT_FULL, A_B_C);
-        #end
 	}
 
 	function addPage(name:PageName, page:Page):Dynamic
