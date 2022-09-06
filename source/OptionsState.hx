@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import haxe.ds.EnumValueMap;
 import flixel.text.FlxText;
+import flixel.util.FlxColor;
 
 class OptionsState extends MusicBeatState
 {
@@ -25,6 +26,7 @@ class OptionsState extends MusicBeatState
 		add(bg);
 		var optionsmenu:OptionsMenu = addPage(Options, new OptionsMenu(false));
 		var preferencesmenu:PreferencesMenu = addPage(Preferences, new PreferencesMenu());
+		var androidmenu:AndroidControlsSubState = addPage(Android Controls, new AndroidControlsSubState());
 		var controlsmenu:ControlsMenu = addPage(Controls, new ControlsMenu());
 		if (optionsmenu.hasMultipleOptions())
 		{
@@ -44,6 +46,7 @@ class OptionsState extends MusicBeatState
 			setPage(Controls);
 		}
 		currentPage.enabled = false;
+		
 		super.create();
 		
     	#if android
@@ -51,14 +54,6 @@ class OptionsState extends MusicBeatState
         #end
         
         #if android
-		var tipText:FlxText = new FlxText(10, FlxG.height - 24, 0, 'Press C to customize your android controls', 16);
-		tipText.setFormat(Paths.font('vcr.ttf'), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		tipText.borderSize = 2.4;
-		tipText.scrollFactor.set();
-		add(tipText);
-		#end
-		
-		#if android
 		if (virtualPad.buttonC.justPressed) {
 			#if android
 			removeVirtualPad();
@@ -67,7 +62,6 @@ class OptionsState extends MusicBeatState
 		}
 		#end
 	}
-}
 
 	function addPage(name:PageName, page:Page):Dynamic
 	{
