@@ -49,9 +49,8 @@ class OptionsState extends MusicBeatState
     	#if android
         addVirtualPad(LEFT_FULL, A_B_C);
         #end
-	}
-	
-		#if android
+        
+        #if android
 		var tipText:FlxText = new FlxText(10, FlxG.height - 24, 0, 'Press C to customize your android controls', 16);
 		tipText.setFormat(Paths.font('vcr.ttf'), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		tipText.borderSize = 2.4;
@@ -68,6 +67,7 @@ class OptionsState extends MusicBeatState
 		}
 		#end
 	}
+}
 
 	function addPage(name:PageName, page:Page):Dynamic
 	{
