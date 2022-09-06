@@ -320,6 +320,16 @@ class TitleState extends MusicBeatState
 			FlxG.fullscreen = !FlxG.fullscreen;
 
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER;
+		#if android
+        var justTouched:Bool = false;
+
+        for (touch in FlxG.touches.list)
+	         if (touch.justPressed)
+		         justTouched = true;
+
+        if (justTouched)
+	    //Your code
+        #end
 
 		if (FlxG.keys.justPressed.EIGHT || FlxG.keys.justPressed.FIVE)
 			FlxG.switchState(new CutsceneAnimTestState());

@@ -149,6 +149,10 @@ class FreeplayState extends MusicBeatState
 		selector.size = 40;
 		selector.text = ">";
 		// add(selector);
+		
+		#if android
+        addVirtualPad(LEFT_FULL, A_B);
+        #end
 
 		super.create();
 	}
