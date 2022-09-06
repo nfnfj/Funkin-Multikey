@@ -3,6 +3,7 @@ package ui;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import haxe.ds.EnumValueMap;
+import flixel.text.FlxText;
 
 class OptionsState extends MusicBeatState
 {
@@ -44,6 +45,28 @@ class OptionsState extends MusicBeatState
 		}
 		currentPage.enabled = false;
 		super.create();
+		
+    	#if android
+        addVirtualPad(LEFT_FULL, A_B_C);
+        #end
+	}
+	
+		#if android
+		var tipText:FlxText = new FlxText(10, FlxG.height - 24, 0, 'Press C to customize your android controls', 16);
+		tipText.setFormat(Paths.font('vcr.ttf'), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		tipText.borderSize = 2.4;
+		tipText.scrollFactor.set();
+		add(tipText);
+		#end
+		
+		#if android
+		if (virtualPad.buttonC.justPressed) {
+			#if android
+			removeVirtualPad();
+			#end
+			openSubState(new android.AndroidControlsSubState());
+		}
+		#end
 	}
 
 	function addPage(name:PageName, page:Page):Dynamic
