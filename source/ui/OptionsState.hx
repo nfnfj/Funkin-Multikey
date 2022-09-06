@@ -54,6 +54,15 @@ class OptionsState extends MusicBeatState
 		add(tipText);
 		#end
 		
+		#if android
+		if (virtualPad.buttonC.justPressed) {
+			#if android
+			removeVirtualPad();
+			#end
+			openSubState(new android.AndroidControlsSubState());
+		}
+		#end
+		
 		super.create();
 		
     	#if android
