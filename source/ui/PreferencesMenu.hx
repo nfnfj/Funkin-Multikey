@@ -4,8 +4,10 @@ import openfl.Lib;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxCamera;
+import flash.text.TextField;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import flash.text.TextField;
 import haxe.ds.StringMap;
 
 class PreferencesMenu extends Page
